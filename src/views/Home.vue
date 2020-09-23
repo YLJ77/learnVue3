@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <h1>counter: {{counter}}</h1>
+    <button @click="increCounter">incre</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'Home',
+  setup() {
+    const counter = ref(1);
+    function increCounter() {
+      counter.value++;
+    }
+    return {counter, increCounter}
+  },
   components: {
-    HelloWorld,
   },
 });
+
 </script>
